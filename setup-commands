@@ -1,0 +1,12 @@
+# Create Next.js project with TypeScript
+yarn create next-app graywatch --typescript --tailwind --eslint
+
+# Navigate into project directory
+cd graywatch
+
+# Install dependencies
+yarn add @mui/joy @emotion/react @emotion/styled
+yarn add @supabase/supabase-js @supabase/auth-helpers-nextjs
+yarn add @trpc/client @trpc/server @trpc/react-query @tanstack/react-query
+yarn add framer-motion zod
+yarn add -D typescript @types/node @types/react @types/react-dom
