@@ -4,7 +4,7 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  basePath: '/graywatch',
+  // The basePath will be automatically injected by the GitHub Actions workflow
 }
 
 module.exports = nextConfig 
