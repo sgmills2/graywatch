@@ -39,14 +39,18 @@ export default function Navbar() {
           }}
         >
           <Link href="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
-            <Logo size={32} />
+            <Logo size={40} />
             <Typography
-              level="title-lg"
+              level="h2"
               sx={{
-                ml: 1,
-                background: 'linear-gradient(45deg, var(--joy-palette-primary-500), var(--joy-palette-primary-700))',
+                ml: 2,
+                fontSize: { xs: '1.75rem', md: '2rem' },
+                fontWeight: 800,
+                letterSpacing: '-0.02em',
+                background: 'linear-gradient(45deg, var(--joy-palette-primary-200), var(--joy-palette-primary-400))',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
+                textShadow: '0 0 30px rgba(156, 39, 176, 0.3)',
               }}
             >
               Graywatch

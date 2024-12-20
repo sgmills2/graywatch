@@ -1,0 +1,17 @@
+{
+  "name": "Graywatch Analytics",
+  "short_name": "Graywatch",
+  "description": "Transform your data into actionable insights with Graywatch Analytics",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#121212",
+  "theme_color": "#9c27b0",
+  "icons": [
+    {
+      "src": "/logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+} 

@@ -1,58 +1,53 @@
-'use client';
-
-import React from 'react';
-import { CssVarsProvider, extendTheme } from '@mui/joy/styles';
-import CssBaseline from '@mui/joy/CssBaseline';
 import { Inter } from 'next/font/google';
+import type { Metadata } from 'next';
 import ClientLayout from '../components/ClientLayout';
 
 const inter = Inter({ subsets: ['latin'] });
 
-const theme = extendTheme({
-  colorSchemes: {
-    light: {
-      palette: {
-        primary: {
-          50: '#f8f9fa',
-          100: '#e9ecef',
-          200: '#dee2e6',
-          300: '#ced4da',
-          400: '#adb5bd',
-          500: '#6c757d',
-          600: '#495057',
-          700: '#343a40',
-          800: '#212529',
-          900: '#1a1a1a',
-        },
-        neutral: {
-          50: '#f3e5f5',
-          100: '#e1bee7',
-          200: '#ce93d8',
-          300: '#ba68c8',
-          400: '#ab47bc',
-          500: '#9c27b0',
-          600: '#8e24aa',
-          700: '#7b1fa2',
-          800: '#6a1b9a',
-          900: '#4a148c',
-        },
-      },
-    },
+export const metadata: Metadata = {
+  title: 'Graywatch Analytics | Data Science & AI Solutions',
+  description: 'Transform your data into actionable insights with Graywatch Analytics. Expert consulting in data science, engineering, analytics, and AI solutions.',
+  metadataBase: new URL('https://graywatch.ai'),
+  icons: {
+    icon: [
+      {
+        url: '/logo.svg',
+        type: 'image/svg+xml',
+      }
+    ],
+    shortcut: '/logo.svg',
+    apple: '/logo.svg',
   },
-  fontFamily: {
-    body: inter.style.fontFamily,
-    display: inter.style.fontFamily,
+  manifest: '/manifest.json',
+  openGraph: {
+    title: 'Graywatch Analytics | Data Science & AI Solutions',
+    description: 'Transform your data into actionable insights with Graywatch Analytics. Expert consulting in data science, engineering, analytics, and AI solutions.',
+    url: 'https://graywatch.ai',
+    siteName: 'Graywatch Analytics',
+    images: [
+      {
+        url: '/logo.svg',
+        width: 100,
+        height: 60,
+        alt: 'Graywatch Analytics Logo',
+      }
+    ],
+    locale: 'en_US',
+    type: 'website',
   },
-  components: {
-    JoyButton: {
-      styleOverrides: {
-        root: {
-          borderRadius: '8px',
-        },
-      },
-    },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Graywatch Analytics | Data Science & AI Solutions',
+    description: 'Transform your data into actionable insights with Graywatch Analytics. Expert consulting in data science, engineering, analytics, and AI solutions.',
+    images: ['/logo.svg'],
+    creator: '@graywatch',
+    site: '@graywatch',
   },
-});
+  robots: {
+    index: true,
+    follow: true,
+  },
+};
 
 export default function RootLayout({
   children,
@@ -60,9 +55,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
-        <ClientLayout theme={theme}>{children}</ClientLayout>
+    <html lang="en" suppressHydrationWarning>
+      <head />
+      <body suppressHydrationWarning>
+        <ClientLayout fontFamily={inter.style.fontFamily}>{children}</ClientLayout>
       </body>
     </html>
   );
