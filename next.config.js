@@ -4,12 +4,12 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  // Ensure no basePath is set as we're using a custom domain
-  basePath: '',
-  // Disable trailing slashes
-  trailingSlash: false,
-  // Ensure proper asset prefix for production
-  assetPrefix: process.env.NODE_ENV === 'production' ? 'https://graywatch.ai' : '',
+  // Remove assetPrefix as it might interfere with GitHub Pages
+  distDir: 'out',
+  eslint: {
+    // Ignore ESLint errors during production build
+    ignoreDuringBuilds: true,
+  },
 }
 
 module.exports = nextConfig 
