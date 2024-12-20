@@ -35,14 +35,6 @@ export const metadata: Metadata = {
     locale: 'en_US',
     type: 'website',
   },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Graywatch Analytics | Data Science & AI Solutions',
-    description: 'Transform your data into actionable insights with Graywatch Analytics. Expert consulting in data science, engineering, analytics, and AI solutions.',
-    images: ['/logo.svg'],
-    creator: '@graywatch',
-    site: '@graywatch',
-  },
   robots: {
     index: true,
     follow: true,

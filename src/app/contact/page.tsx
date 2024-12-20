@@ -11,12 +11,34 @@ export default function Contact() {
     company: '',
     message: ''
   });
-  const [status, setStatus] = React.useState<'idle' | 'success' | 'error'>('idle');
+  const [status, setStatus] = React.useState<'idle' | 'loading' | 'success' | 'error'>('idle');
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setStatus('success'); // For now, just show success
-    // TODO: Integrate with Supabase
+    setStatus('loading');
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...formState,
+          to: 'sean@graywatch.ai'
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to send message');
+      }
+
+      setStatus('success');
+      setFormState({ name: '', email: '', company: '', message: '' });
+    } catch (error) {
+      console.error('Error sending message:', error);
+      setStatus('error');
+    }
   };
 
   return (
@@ -58,6 +80,7 @@ export default function Contact() {
               value={formState.name}
               onChange={(e) => setFormState(prev => ({ ...prev, name: e.target.value }))}
               placeholder="John Doe"
+              disabled={status === 'loading'}
             />
           </FormControl>
 
@@ -68,6 +91,7 @@ export default function Contact() {
               value={formState.email}
               onChange={(e) => setFormState(prev => ({ ...prev, email: e.target.value }))}
               placeholder="john@example.com"
+              disabled={status === 'loading'}
             />
           </FormControl>
 
@@ -77,6 +101,7 @@ export default function Contact() {
               value={formState.company}
               onChange={(e) => setFormState(prev => ({ ...prev, company: e.target.value }))}
               placeholder="Your company name"
+              disabled={status === 'loading'}
             />
           </FormControl>
 
@@ -87,6 +112,7 @@ export default function Contact() {
               value={formState.message}
               onChange={(e) => setFormState(prev => ({ ...prev, message: e.target.value }))}
               placeholder="Tell us about your project or requirements"
+              disabled={status === 'loading'}
             />
           </FormControl>
 
@@ -102,7 +128,12 @@ export default function Contact() {
             </Alert>
           )}
 
-          <Button type="submit" size="lg">
+          <Button 
+            type="submit" 
+            size="lg"
+            loading={status === 'loading'}
+            disabled={status === 'loading'}
+          >
             Send Message
           </Button>
         </Box>

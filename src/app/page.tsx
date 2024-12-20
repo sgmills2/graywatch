@@ -8,6 +8,16 @@ import ScrollAnimation from '../components/ScrollAnimation';
 import Footer from '../components/Footer';
 
 function PointillismBackground() {
+  const [mounted, setMounted] = React.useState(false);
+
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return null;
+  }
+
   return (
     <Box
       sx={{
@@ -39,6 +49,8 @@ function PointillismBackground() {
           transition={{
             duration: Math.random() * 3 + 2,
             repeat: Infinity,
+            repeatType: 'loop',
+            ease: 'easeInOut',
             delay: Math.random() * 2,
           }}
         />
